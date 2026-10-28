@@ -1,0 +1,6 @@
+{
+  "name": "EcoTwin AI",
+  "description": "Environmental Risk Prediction and Decision Support System combining historical air-quality datasets, locally trained machine-learning models, geospatial twin visualization, scenario simulation, and evidence-linked recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

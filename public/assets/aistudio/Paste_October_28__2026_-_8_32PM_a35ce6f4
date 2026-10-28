@@ -1,0 +1,1120 @@
+# MASTER DEVELOPMENT PROMPT: ECOTWIN AI
+## Environmental Risk Prediction and Decision Support System
+
+Act as a senior full-stack engineer, machine-learning engineer, environmental data scientist, UI/UX designer, and software architect.
+
+Build a complete, professional, production-quality academic project called **EcoTwin AI — Environmental Risk Prediction and Decision Support System**.
+
+The application must be developed in Visual Studio Code as a fully functional, software-only environmental digital-twin prototype. It must combine real environmental datasets, locally trained machine-learning models, interactive environmental visualizations, scenario simulation, and evidence-based recommendations.
+
+Do not build only a frontend mockup. Implement the frontend, backend, data pipeline, model training, model inference, database integration, validation, testing, and documentation.
+
+---
+
+# 1. PROJECT VISION
+
+EcoTwin AI creates a virtual representation of a selected geographical environment using historical environmental data.
+
+It allows users to:
+
+- Analyze historical environmental conditions.
+- Explore air-pollution patterns across supported locations.
+- Train and evaluate machine-learning models.
+- Predict selected environmental indicators.
+- Visualize observations and predictions on interactive maps.
+- Simulate hypothetical environmental scenarios.
+- Compare baseline and modified scenarios.
+- Receive rule-based, evidence-linked environmental recommendations.
+- Export environmental analysis reports.
+
+The first implementation must focus on air-quality and PM2.5 prediction. Design the architecture so vegetation analysis, temperature, rainfall, and water-quality modules can be added later.
+
+This is an environmental science and AI/ML project, not a hardware or IoT project.
+
+## Mandatory restrictions
+
+1. Do not require physical sensors, Arduino, ESP32, Raspberry Pi, or any hardware integration.
+2. Do not require paid AI APIs, cloud AI services, or API keys.
+3. Do not use hardcoded predictions presented as real ML outputs.
+4. Do not fabricate datasets, evaluation metrics, pollution readings, model accuracy, or environmental impact.
+5. Do not display simulated values as live environmental measurements.
+6. Do not stop after creating a static UI. Implement functional workflows.
+7. Do not leave major modules as empty pages, TODO comments, or nonfunctional buttons.
+8. Prefer free and open-source technologies.
+9. Run the application locally on a standard Windows laptop.
+10. If a dataset or external service is unavailable, provide a clear fallback using a bundled, documented sample dataset. Label sample data explicitly.
+
+---
+
+# 2. REQUIRED TECHNOLOGY STACK
+
+Use the following technology stack unless a genuine compatibility issue requires a documented alternative.
+
+## Frontend
+
+- Next.js with the App Router.
+- React.
+- TypeScript with strict type checking.
+- Tailwind CSS.
+- shadcn/ui for accessible interface primitives.
+- Lucide React for icons.
+- Framer Motion for restrained transitions and animations.
+- Recharts for standard charts.
+- React Leaflet with Leaflet for interactive geographical maps.
+- React Hook Form and Zod for form validation.
+- TanStack Table for data tables.
+- A suitable CSV parsing library for client-side previews.
+
+Use stable, mutually compatible package versions. Do not mix incompatible framework versions or install unnecessary dependencies.
+
+## Backend
+
+- Python 3.11 or another compatible, supported Python version.
+- FastAPI.
+- Pydantic for request and response validation.
+- Pandas and NumPy for data processing.
+- Scikit-learn for machine learning.
+- Joblib for model serialization.
+- Uvicorn for the local API server.
+
+## Machine learning
+
+- Linear Regression or a persistence/mean baseline.
+- Random Forest Regressor as the primary candidate.
+- Optional XGBoost only if useful and available.
+- MAE and RMSE for regression evaluation.
+- Time-ordered validation for time-dependent prediction tasks.
+- Feature importance or permutation importance for explainability.
+
+Do not introduce large language models, external AI APIs, or deep-learning frameworks unless they are genuinely necessary.
+
+## Data storage
+
+- CSV files for source datasets.
+- SQLite with SQLAlchemy for the initial local database.
+- Keep the data-access layer modular so PostgreSQL can be adopted later.
+
+Store dataset metadata, model versions, evaluation metrics, prediction history, saved scenarios, and report metadata where appropriate.
+
+## Development tools
+
+- Visual Studio Code.
+- Node.js and npm.
+- Python virtual environment.
+- Git.
+- pytest for backend tests.
+- Vitest and React Testing Library for frontend tests where appropriate.
+
+The core application must work locally without paid services.
+
+---
+
+# 3. PREMIUM UI/UX DESIGN SYSTEM
+
+Create a distinctive, premium environmental intelligence interface.
+
+The design must feel like a modern climate-tech analytics platform, combining the sophistication of a professional data-science product with the visual clarity of an environmental research dashboard.
+
+Do not make it look like a generic admin template, a basic college project, or a conventional AI chatbot.
+
+## Visual direction
+
+Product personality:
+- Scientific.
+- Sophisticated.
+- Calm.
+- Trustworthy.
+- Minimal.
+- Data-driven.
+- Environmentally conscious.
+
+Use a restrained design system rather than excessive gradients, bright colors, glass effects, or decorative animations.
+
+### Color palette
+
+Use these colors consistently:
+
+- Primary background: `#0B1220`
+- Secondary background: `#111C2E`
+- Surface cards: `#17263A`
+- Elevated surfaces: `#1D3046`
+- Primary teal: `#2DD4BF`
+- Eco green: `#A3E635`
+- Information blue: `#60A5FA`
+- Warning amber: `#FBBF24`
+- Critical red: `#F87171`
+- Main text: `#F1F5F9`
+- Secondary text: `#94A3B8`
+- Borders: `#293B50`
+
+Use teal and green sparingly for emphasis. Red and amber must indicate meaningful risk states rather than decoration.
+
+Support a polished light theme if practical, but prioritize the dark theme.
+
+### Typography
+
+Use Inter as the main font, with a reliable local or system fallback.
+
+Use:
+- Clear heading hierarchy.
+- Compact, readable data labels.
+- Tabular numerals for measurements.
+- Consistent spacing.
+- Comfortable line lengths.
+- Strong contrast.
+
+### Layout
+
+Create:
+- A collapsible left sidebar.
+- A compact top navigation bar.
+- A breadcrumb or page-title area.
+- A responsive main content grid.
+- Consistent card radii and border styles.
+- A restrained shadow system.
+- Helpful loading, error, empty, and success states.
+
+Use a 12-column desktop grid where appropriate.
+
+The interface must work on desktop, laptop, tablet, and mobile.
+
+### Motion
+
+Use Framer Motion for:
+- Page transitions.
+- Sidebar expansion.
+- Subtle card entrance animations.
+- Chart and modal transitions.
+- Loading feedback.
+
+Keep animations subtle and respect reduced-motion preferences.
+
+Do not animate every element continuously.
+
+---
+
+# 4. APPLICATION NAVIGATION
+
+Create the following sidebar navigation.
+
+1. Overview
+2. Environmental Twin
+3. AI Predictions
+4. Scenario Lab
+5. Dataset Explorer
+6. Model Laboratory
+7. Recommendations
+8. Reports
+9. Settings
+
+Every navigation item must open a working page.
+
+Use a consistent icon system and active-route indicator.
+
+Provide a global location selector and dataset status indicator where relevant.
+
+---
+
+# 5. OVERVIEW DASHBOARD
+
+Build a premium overview dashboard that immediately communicates the state of the selected dataset and model.
+
+## Header
+
+Display:
+- EcoTwin AI logo and product name.
+- Current page title.
+- Selected location.
+- Dataset freshness or last-observed date.
+- Backend and model status.
+- Theme toggle.
+- User settings menu if implemented.
+
+Do not display a fake live status.
+
+## KPI cards
+
+Include the following data-driven cards:
+
+1. Latest available PM2.5 observation.
+2. Latest available PM10 observation, if present.
+3. Historical average PM2.5 for the selected period.
+4. Selected location count.
+5. Prediction model status.
+6. Latest dataset timestamp.
+
+Each card should show:
+- Metric name.
+- Actual value or a clear unavailable state.
+- Unit.
+- Observation date or selected time range.
+- A small historical sparkline where data is sufficient.
+
+Do not invent values when data is missing.
+
+## Dashboard charts
+
+Implement:
+
+- PM2.5 historical trend.
+- PM10 trend when available.
+- Pollutant comparison.
+- Monthly or seasonal patterns where data supports them.
+- Location-level comparisons.
+- Model prediction versus observed values for the evaluation period.
+
+Add useful filters:
+- Date range.
+- Location.
+- Pollutant.
+- Dataset.
+- Aggregation interval.
+
+All charts must update when the relevant filters change.
+
+## Environmental alerts
+
+Display data-driven alerts such as:
+- Missing or stale observations.
+- Unusually high readings based on documented thresholds.
+- A predicted value outside the chosen reference category.
+- Insufficient data for a reliable prediction.
+- Model unavailable or not trained.
+
+Clearly distinguish observed-value alerts from model-prediction alerts.
+
+---
+
+# 6. ENVIRONMENTAL TWIN MAP
+
+Build an interactive geographical exploration page.
+
+Use React Leaflet with a free, appropriately attributed map-tile source. Do not embed API keys.
+
+## Features
+
+- Pan and zoom.
+- Location markers.
+- Marker clustering when needed.
+- Pollutant-based marker colors.
+- Optional heat-map visualization.
+- Date and pollutant filters.
+- Location search.
+- A side panel containing the selected location's details.
+- Historical trend for the selected location.
+- Latest available observation.
+- Prediction result, when a supported model and input are available.
+- Dataset source and timestamp.
+- Legend explaining colors and thresholds.
+
+The map must only display geographically supported records.
+
+Do not create arbitrary coordinates or fabricate geographical pollution measurements.
+
+If a dataset contains no latitude or longitude, allow mapping by a documented station-location lookup or clearly disable the geographical layer.
+
+Use appropriate attribution for map tiles and respect usage policies.
+
+## Visual style
+
+Create a refined dark map interface with:
+- Muted base-map colors.
+- Teal and green for lower-risk categories where justified.
+- Amber and red for higher-risk categories.
+- Clear selected-location highlighting.
+- A compact floating legend.
+- A collapsible information panel.
+
+Do not obscure the map with excessive controls.
+
+---
+
+# 7. AI PREDICTION MODULE
+
+Implement an actual machine-learning prediction workflow.
+
+## Primary task
+
+Predict PM2.5 concentration for a clearly defined prediction target.
+
+First inspect the available dataset. Select the prediction horizon and features according to the actual temporal coverage.
+
+Do not claim future forecasting if the model only estimates a value from contemporaneous inputs.
+
+If the dataset does not support forecasting, label the task as an estimate for supplied input conditions.
+
+## Input form
+
+Include supported fields such as:
+- Location or station.
+- Date and time.
+- Historical PM2.5 values.
+- Other pollutant values, if required.
+- Temperature, humidity, or weather features, if available.
+- Prediction horizon, only if supported by the trained model.
+
+Do not require features that do not exist in the training dataset or cannot be supplied at prediction time.
+
+## Prediction result
+
+Display:
+- Predicted PM2.5 value.
+- Measurement unit.
+- Selected location.
+- Input summary.
+- Model version.
+- Prediction timestamp.
+- Evaluation metrics for that model.
+- Reference category, if a valid standard is configured.
+- Data-quality warnings.
+- Explanation of the prediction's limitations.
+
+Do not call a prediction a measurement.
+
+Do not imply that a predicted value is a guaranteed future outcome.
+
+## Prediction history
+
+Allow users to:
+- View previous predictions.
+- Filter by location and date.
+- Open prediction details.
+- Compare selected predictions.
+- Export prediction records.
+
+Persist the history in SQLite when the database is enabled.
+
+---
+
+# 8. MACHINE-LEARNING TRAINING PIPELINE
+
+Implement a real, reproducible training pipeline in Python.
+
+Create scripts for:
+- Dataset inspection.
+- Data cleaning.
+- Feature engineering.
+- Time-aware splitting.
+- Baseline training.
+- Candidate model training.
+- Model evaluation.
+- Model saving.
+- Prediction inference.
+
+Suggested files:
+
+`backend/ml/inspect_data.py`
+
+`backend/ml/preprocess.py`
+
+`backend/ml/train.py`
+
+`backend/ml/evaluate.py`
+
+`backend/ml/predict.py`
+
+`backend/ml/saved_models/`
+
+Adjust the layout if a cleaner architecture is preferable.
+
+## Training requirements
+
+1. Load a documented dataset.
+2. Validate the required columns.
+3. Handle missing values without leaking test information.
+4. Convert timestamps and units consistently.
+5. Sort time-dependent records chronologically.
+6. Define the prediction target and features explicitly.
+7. Use a chronological train/test split for time-series data.
+8. Establish a simple baseline.
+9. Train a Random Forest Regressor.
+10. Evaluate both models on the same held-out test period.
+11. Save the fitted preprocessing pipeline and model.
+12. Save the feature schema, training timestamp, data range, and metrics.
+13. Provide reproducible training commands.
+14. Reject incompatible prediction inputs.
+15. Detect model and feature-schema mismatches.
+
+Avoid target leakage.
+
+If lag features are used, create them in chronological order and ensure that only information available at prediction time is used.
+
+If the dataset is too small or unsuitable, display a clear explanation and do not claim the model is reliable.
+
+## Model Laboratory page
+
+Create a professional model evaluation page showing:
+- Model name and version.
+- Training and test date ranges.
+- Dataset size.
+- Feature list.
+- MAE.
+- RMSE.
+- Baseline comparison.
+- Actual versus predicted chart.
+- Residual error distribution.
+- Feature importance when appropriate.
+- Model status.
+- Retraining controls.
+
+Only display metrics produced by the real training and evaluation scripts.
+
+Never invent an accuracy percentage for a regression model.
+
+Do not allow model retraining to silently overwrite a working model. Save model versions and make the active model selection explicit.
+
+---
+
+# 9. DATASET EXPLORER
+
+Build a functional dataset management module.
+
+## Upload workflow
+
+Allow users to:
+- Upload CSV files.
+- Preview rows.
+- View column names and data types.
+- Select date, location, pollutant, and feature columns.
+- Validate required fields.
+- Detect missing values.
+- Detect duplicate records.
+- Identify invalid numeric values.
+- Inspect date ranges.
+- View summary statistics.
+- Download a cleaned copy.
+
+Validate file size, encoding, format, and expected schema.
+
+Do not execute uploaded content.
+
+Use secure filenames and store uploads outside publicly served directories.
+
+## Dataset information
+
+For each dataset, display:
+- Dataset name.
+- Source.
+- Upload timestamp.
+- Number of rows.
+- Number of columns.
+- Date range.
+- Location count, if available.
+- Missing-value percentage.
+- Selected target.
+- Dataset validation status.
+
+Store source and licensing information where available.
+
+## Sample data
+
+Bundle a small, clearly documented demonstration dataset if needed.
+
+Label it:
+
+"DEMO DATA — Illustrative or sample data, not live environmental observations."
+
+Do not use fictional values to claim actual pollution levels or scientific model performance.
+
+If demonstration data is generated for software testing, keep it separate from real training and evaluation datasets.
+
+---
+
+# 10. SCENARIO LAB
+
+Build an interactive what-if simulation environment.
+
+This module should be one of the most visually attractive parts of the application.
+
+## Interface
+
+Create:
+- Baseline scenario card.
+- Modified scenario card.
+- Scenario parameter controls.
+- Baseline-versus-scenario charts.
+- Absolute and percentage differences where meaningful.
+- Assumption summary.
+- Save scenario action.
+- Scenario comparison history.
+
+Use sliders and numeric inputs with clear units and reasonable bounds.
+
+## Scenario types
+
+Initially support scenarios only for variables the model or calculation actually represents.
+
+Examples:
+- Change a supported weather input.
+- Change a supported pollutant input.
+- Compare different model inputs for the same location.
+- Explore hypothetical emissions-reduction assumptions using an explicitly documented calculation model.
+
+Do not directly change the predicted PM2.5 value to make a scenario appear successful.
+
+Do not claim that changing green cover or reducing emissions will cause a particular pollution reduction unless the model or evidence supports that relationship.
+
+For each scenario, display:
+- Baseline inputs.
+- Modified inputs.
+- Baseline output.
+- Modified output.
+- Difference.
+- Model version.
+- Assumptions.
+- Warnings about unsupported extrapolation.
+
+If a scenario falls outside the training data range, show an extrapolation warning.
+
+Use the term "scenario estimate" rather than "proven environmental impact."
+
+---
+
+# 11. ENVIRONMENTAL RECOMMENDATION ENGINE
+
+Implement an explainable, rule-based recommendation engine.
+
+Do not require an LLM or external API.
+
+Recommendations must be based on:
+- Observed environmental indicators.
+- Documented threshold rules.
+- Data-quality status.
+- Model outputs.
+- Supported location metadata.
+
+## Examples
+
+For elevated observed pollution:
+- Recommend investigating emission sources.
+- Suggest reviewing local traffic and industrial activity.
+- Recommend confirming findings using appropriate monitoring data.
+
+For missing or unreliable data:
+- Recommend additional data collection.
+- Display the limitation before producing a confident recommendation.
+
+For possible vegetation decline:
+- Recommend verifying the trend with suitable satellite imagery or field observations.
+
+For water-quality extensions:
+- Recommend confirmatory sampling and appropriate laboratory analysis.
+
+## Recommendation card
+
+Each card should contain:
+- Recommendation title.
+- Environmental issue.
+- Supporting data.
+- Reason for the recommendation.
+- Suggested action.
+- Priority level.
+- Confidence or evidence-strength description.
+- Source or rule reference, where available.
+
+Do not present general advice as a scientifically verified intervention effect.
+
+Avoid health diagnoses or claims of regulatory compliance.
+
+---
+
+# 12. REPORT GENERATION
+
+Implement a working report module.
+
+Allow users to generate and download a PDF or CSV report containing selected information.
+
+## Environmental report sections
+
+1. Project and report title.
+2. Selected location and date range.
+3. Dataset source and limitations.
+4. Summary statistics.
+5. Historical environmental trends.
+6. Prediction target and model information.
+7. Actual model evaluation metrics.
+8. Selected prediction results.
+9. Baseline-versus-scenario comparison.
+10. Environmental recommendations.
+11. Assumptions and limitations.
+12. References and data sources.
+
+Use a suitable PDF-generation library.
+
+Ensure charts and tables remain readable in the exported document.
+
+Do not include unverified values or claim that a report represents an official environmental assessment.
+
+Provide CSV export for filtered observations, prediction history, and scenario results.
+
+---
+
+# 13. DATABASE DESIGN
+
+Use SQLite and SQLAlchemy for local persistence.
+
+Create a sensible schema containing:
+
+## Dataset
+
+- id
+- name
+- source
+- file_path
+- uploaded_at
+- row_count
+- column_schema
+- date_range
+- validation_status
+
+## ModelVersion
+
+- id
+- model_name
+- version
+- target
+- features
+- training_period
+- test_period
+- metrics
+- artifact_path
+- created_at
+- is_active
+
+## Prediction
+
+- id
+- model_version_id
+- location
+- input_payload
+- predicted_value
+- unit
+- created_at
+
+## Scenario
+
+- id
+- name
+- baseline_inputs
+- modified_inputs
+- baseline_output
+- modified_output
+- model_version_id
+- assumptions
+- created_at
+
+## Report
+
+- id
+- report_name
+- report_type
+- created_at
+- file_path
+
+Use migrations or a reliable database initialization procedure.
+
+Add appropriate indexes and foreign keys.
+
+Avoid storing large CSV files or model binaries directly in database records.
+
+Implement retention and deletion logic where needed.
+
+Do not require user authentication for the basic local academic prototype. If authentication is added, implement it securely rather than using a decorative login screen.
+
+---
+
+# 14. BACKEND API DESIGN
+
+Create REST endpoints with proper request validation and error handling.
+
+Suggested endpoints:
+
+GET `/api/health`
+
+GET `/api/dashboard/summary`
+
+GET `/api/datasets`
+
+POST `/api/datasets/upload`
+
+GET `/api/datasets/{dataset_id}/preview`
+
+GET `/api/datasets/{dataset_id}/summary`
+
+GET `/api/datasets/{dataset_id}/observations`
+
+GET `/api/models`
+
+GET `/api/models/metrics`
+
+POST `/api/models/train`
+
+POST `/api/predictions`
+
+GET `/api/predictions/history`
+
+POST `/api/scenarios/compare`
+
+POST `/api/scenarios/save`
+
+GET `/api/scenarios`
+
+GET `/api/recommendations`
+
+POST `/api/reports/generate`
+
+Use Pydantic schemas for request and response validation.
+
+Implement:
+- Consistent error responses.
+- Input validation.
+- Logging.
+- Safe file handling.
+- CORS restricted to the local frontend origin.
+- Request size limits.
+- Timeouts where appropriate.
+- Clear status codes.
+- Health checks.
+- Useful API documentation through FastAPI's local OpenAPI interface.
+
+Do not expose internal file paths, stack traces, secrets, or uploaded files publicly.
+
+---
+
+# 15. FRONTEND FUNCTIONALITY
+
+Every button and interactive element must have a real purpose.
+
+Implement:
+- Working navigation.
+- Search and filters.
+- Functional date pickers.
+- CSV upload and preview.
+- Data validation feedback.
+- Prediction form and result.
+- Interactive charts.
+- Map selection.
+- Scenario sliders.
+- Baseline-versus-scenario comparison.
+- Save and reload scenario.
+- Report generation.
+- CSV export.
+- Settings persistence where appropriate.
+- Loading, error, empty, and success states.
+
+Use typed API clients and environment variables for configurable local URLs.
+
+Avoid unnecessary global state. Use React state and context where appropriate.
+
+Do not make every page depend on one giant component.
+
+Create reusable components for:
+- Metric cards.
+- Charts.
+- Data tables.
+- Risk indicators.
+- Form controls.
+- Dataset status.
+- Model status.
+- Empty states.
+- Error states.
+- Confirmation dialogs.
+
+Add accessibility labels, keyboard navigation, proper focus states, and reduced-motion support.
+
+---
+
+# 16. DESIGN DETAILS THAT MAKE IT UNIQUE
+
+Make the application feel like an environmental digital-twin workspace.
+
+## Signature feature: Environmental Twin Workspace
+
+Create a central workspace with:
+- A large environmental map.
+- A compact environmental metrics panel.
+- A timeline or date-range selector.
+- A selected-location detail drawer.
+- A prediction overlay toggle.
+- A scenario comparison mode.
+
+The user should be able to move naturally between observation, prediction, and hypothetical scenario exploration.
+
+## Signature feature: Evidence-first analytics
+
+Every important value must communicate its origin.
+
+Use badges or labels such as:
+- Observed.
+- Historical.
+- Model prediction.
+- Demonstration data.
+- Hypothetical scenario.
+- Unavailable.
+
+These are semantic labels, not decorative badges.
+
+## Signature feature: Model transparency
+
+When displaying a prediction, provide a "How this estimate was produced" panel showing:
+- Model version.
+- Input variables.
+- Training period.
+- Evaluation metrics.
+- Relevant feature importance.
+- Known limitations.
+
+## Signature feature: Environmental timeline
+
+Allow users to move between historical dates or date ranges and inspect available observations and predictions.
+
+Do not animate the timeline as if the system receives live data when it does not.
+
+## Signature feature: Scenario comparison
+
+Present baseline and modified scenario results side by side.
+
+Highlight the differences while showing the assumptions that produced them.
+
+---
+
+# 17. SECURITY, PERFORMANCE, AND RELIABILITY
+
+Implement practical safeguards.
+
+- Validate all uploaded files.
+- Reject malformed datasets with clear explanations.
+- Limit upload sizes.
+- Prevent path traversal.
+- Do not execute uploaded files.
+- Do not commit datasets containing private information.
+- Keep generated model artifacts and local databases outside public static directories.
+- Never hardcode credentials.
+- Avoid external network dependencies for core predictions.
+- Handle missing models gracefully.
+- Prevent invalid values from reaching the model.
+- Display errors without exposing stack traces.
+- Use pagination for large tables.
+- Avoid loading huge datasets entirely into the browser.
+- Debounce expensive searches and filters where necessary.
+- Cache appropriate read-only summaries.
+- Provide a clear recovery path if a training job fails.
+
+The core application must remain usable if external map tiles or optional public data services are unavailable.
+
+---
+
+# 18. PROJECT DOCUMENTATION
+
+Create a detailed README.md containing:
+
+1. Project overview.
+2. Problem statement.
+3. Objectives.
+4. Features.
+5. Technology stack.
+6. System architecture.
+7. Folder structure.
+8. Prerequisites.
+9. Windows installation instructions.
+10. Virtual environment setup.
+11. Dependency installation.
+12. Dataset preparation.
+13. Model training.
+14. Backend startup.
+15. Frontend startup.
+16. Database initialization.
+17. API documentation access.
+18. Testing instructions.
+19. Known limitations.
+20. Future enhancements.
+21. Dataset citations and licensing information.
+
+Also create:
+- `.env.example`
+- `.gitignore`
+- `requirements.txt`
+- `package.json`
+- Database initialization or migration files.
+- Backend tests.
+- Frontend tests.
+- A dataset schema example.
+- A model evaluation report template.
+- A clear troubleshooting section.
+
+Do not include secrets in the repository.
+
+---
+
+# 19. TESTING AND ACCEPTANCE CRITERIA
+
+Do not consider the application complete until the following checks have been performed.
+
+## Frontend
+
+- All pages open successfully.
+- Sidebar navigation works.
+- Responsive layouts work.
+- Charts render from API data.
+- Filters affect the displayed results.
+- Forms validate inputs.
+- Empty and error states are visible.
+- No major console errors remain.
+
+## Backend
+
+- Health endpoint returns the correct status.
+- Dataset upload validates the file.
+- Invalid requests are rejected.
+- Dataset summaries use real dataset contents.
+- Prediction requests call the trained model.
+- Scenario comparison uses actual supported calculations or model outputs.
+- API errors are handled consistently.
+
+## Machine learning
+
+- The training pipeline runs.
+- Baseline and candidate models are evaluated.
+- Evaluation metrics are calculated from held-out data.
+- Model artifacts can be loaded successfully.
+- Inference uses the same preprocessing pipeline as training.
+- The feature schema is checked.
+- The model's limitations are documented.
+
+## Database
+
+- Tables initialize correctly.
+- Dataset metadata can be saved and retrieved.
+- Model versions can be saved and selected.
+- Prediction history persists.
+- Saved scenarios can be reloaded.
+- Database failures produce useful errors.
+
+## Reports
+
+- PDF export works.
+- CSV export works.
+- Exported values match the selected data.
+- Reports clearly distinguish observations, predictions, and scenarios.
+
+Never claim a test passed unless it was actually executed.
+
+---
+
+# 20. IMPLEMENTATION WORKFLOW
+
+Follow this development sequence.
+
+### Phase 1: Inspect and plan
+
+- Inspect the existing repository.
+- Identify installed dependencies and existing code.
+- Preserve useful existing work.
+- Create a clear implementation plan.
+- Identify the required dataset schema.
+
+### Phase 2: Establish the data pipeline
+
+- Implement data loading and validation.
+- Prepare the ML training workflow.
+- Train a baseline and candidate model when suitable data is available.
+- Evaluate and save the model.
+- Document actual results.
+
+### Phase 3: Implement the backend
+
+- Build the API.
+- Implement dataset processing.
+- Integrate the model.
+- Add persistence.
+- Implement scenario calculations.
+- Add validation and tests.
+
+### Phase 4: Implement the frontend
+
+- Establish the design system.
+- Build navigation and layout.
+- Implement each page.
+- Connect pages to the backend.
+- Implement maps, charts, forms, and reports.
+
+### Phase 5: Integrate and test
+
+- Run the frontend and backend.
+- Test all major workflows.
+- Fix runtime errors.
+- Check API communication.
+- Verify that displayed metrics come from actual results.
+- Confirm that the application can run locally from the README instructions.
+
+### Phase 6: Final delivery
+
+Provide:
+- Complete source code.
+- Working frontend.
+- Working backend.
+- ML training and inference scripts.
+- Database initialization.
+- Sample schema or clearly labelled demo data.
+- Tests.
+- README.
+- Exact commands to start the application.
+- Known limitations and remaining work.
+
+---
+
+# 21. WINDOWS LOCAL RUN INSTRUCTIONS
+
+Design the project to run using separate frontend and backend terminals.
+
+The README should include commands equivalent to the following, adjusted to the final folder structure.
+
+Backend:
+
+```powershell
+cd backend
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+Frontend:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Document the required local URLs and how to verify backend health and API documentation.
+
+If a different folder layout is used, update the commands accordingly.
+
+Handle common Windows virtual-environment activation issues in the README.
+
+---
+
+# 22. FINAL DEVELOPMENT INSTRUCTIONS
+
+Begin by inspecting the current project files and available datasets.
+
+If the repository is empty, scaffold the application with the architecture described above.
+
+If a dataset is not available, build the data-ingestion workflow and provide a small, clearly labelled demonstration dataset. Do not claim it represents real environmental observations.
+
+Implement the project incrementally, but continue until the frontend, backend, and core ML workflow are connected.
+
+Do not stop after generating the folder structure, writing a plan, or creating the dashboard.
+
+Do not replace real functionality with decorative placeholders.
+
+Use actual API responses and actual trained-model outputs wherever the feature claims to provide them.
+
+If a feature cannot be completed, explain the limitation clearly and provide a functional alternative rather than pretending it works.
+
+Prioritize correctness, maintainability, accessibility, scientific transparency, and a premium user experience.
+
+**Final goal:** Deliver a beautiful, locally runnable, fully integrated EcoTwin AI web application that demonstrates how historical environmental data, machine learning, interactive visualization, and scenario-based analysis can support environmental decision-making without any physical hardware or paid AI APIs.
+
+Start by inspecting the repository, then implement the application step by step and verify the major workflows before declaring it complete.

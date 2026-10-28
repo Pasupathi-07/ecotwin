@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+backend/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Build outputs
+dist/
+server.js
+
+# Local runtime databases, uploads, and serialized artifacts
+data/*.sqlite
+data/*.sqlite-wal
+data/*.sqlite-shm
+data/uploads/
+data/saved_models/*.json
+data/reports/
+backend/ml/saved_models/*.joblib
+backend/ecotwin.db
+
+# Environment variables
+.env
+.env.local
+.DS_Store
